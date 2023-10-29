@@ -10,6 +10,8 @@ screen.bgcolor("black")
 screen.title("Snake game")
 screen.tracer(0)
 
+username = screen.textinput(title="Snake game", prompt="Please enter your name: ")
+
 snake = Snake()
 food = Food()
 score = Score()
@@ -34,12 +36,12 @@ while game_is_on:
 
     if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
         game_is_on = False
-        score.game_over()
+        score.game_over(username)
 
     for segment in snake.segments[1:]:
         if snake.head.distance(segment) < 10:
             game_is_on = False
-            score.game_over()
+            score.game_over(username)
 
 
 screen.exitonclick()
